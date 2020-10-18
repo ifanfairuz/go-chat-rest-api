@@ -10,5 +10,7 @@ func One(id string) (Models.Chat, error) {
 	var chat Models.Chat
 	result := Connection.Get().First(&chat, id)
 
+	Connection.Close()
+
 	return chat, result.Error
 }

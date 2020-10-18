@@ -22,5 +22,8 @@ func LastWith(email string, target string, limit int) ([]Models.Chat, error) {
 	for i := len(chats) - 1; i >= 0; i-- {
 		reversed = append(reversed, chats[i])
 	}
+
+	Connection.Close()
+
 	return reversed, result.Error
 }

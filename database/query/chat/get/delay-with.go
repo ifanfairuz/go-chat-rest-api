@@ -14,5 +14,7 @@ func DelayWith(email string, target string) ([]Models.Chat, error) {
 	var chats []Models.Chat
 	result := query.Find(&chats)
 
+	Connection.Close()
+
 	return chats, result.Error
 }

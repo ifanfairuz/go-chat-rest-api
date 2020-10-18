@@ -24,5 +24,7 @@ func Received(id int, email string) error {
 
 	result = result.Update("status", 2).Update("received_at", time.Now().Unix())
 
+	Connection.Close()
+
 	return result.Error
 }

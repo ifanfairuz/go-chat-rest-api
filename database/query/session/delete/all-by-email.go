@@ -10,5 +10,7 @@ func AllByEmail(email string) error {
 	session := Models.Session{}
 	result := Connection.Get().Where("email = ?", email).Delete(&session)
 
+	Connection.Close()
+
 	return result.Error
 }

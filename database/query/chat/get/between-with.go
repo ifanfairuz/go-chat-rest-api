@@ -26,5 +26,7 @@ func BetweenWith(email string, target string, start string, end string) ([]Model
 	query = query.Order("send_at")
 	result = query.Find(&chats)
 
+	Connection.Close()
+
 	return chats, result.Error
 }

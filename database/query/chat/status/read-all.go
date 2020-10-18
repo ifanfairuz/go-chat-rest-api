@@ -14,5 +14,7 @@ func ReadAll(ids []int, email string) error {
 
 	result := query.Update("status", 3).Update("read_at", time.Now().Unix())
 
+	Connection.Close()
+
 	return result.Error
 }

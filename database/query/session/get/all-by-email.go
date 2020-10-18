@@ -10,5 +10,7 @@ func AllByEmail(email string) ([]Models.Session, error) {
 	var sessions []Models.Session
 	result := Connection.Get().Where("email = ?", email).Find(&sessions)
 
+	Connection.Close()
+
 	return sessions, result.Error
 }

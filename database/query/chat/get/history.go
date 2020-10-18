@@ -42,5 +42,8 @@ func History(email string, limit int) ([]HistoryResult, error) {
 	for i := len(history) - 1; i >= 0; i-- {
 		reversed = append(reversed, history[i])
 	}
+
+	Connection.Close()
+
 	return reversed, result.Error
 }

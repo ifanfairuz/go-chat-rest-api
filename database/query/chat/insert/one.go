@@ -19,5 +19,7 @@ func One(email string, target string, text string, sendAt int64) (Models.Chat, e
 	}
 	result := Connection.Get().Create(&chat)
 
+	Connection.Close()
+
 	return chat, result.Error
 }

@@ -13,5 +13,7 @@ func ReadAllWith(email string, target string) error {
 	query = query.Where("(`from` = ? OR `to` = ?)", target, target)
 	result := query.Update("status", 3).Update("read_at", time.Now().Unix())
 
+	Connection.Close()
+
 	return result.Error
 }

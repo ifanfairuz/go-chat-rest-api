@@ -10,5 +10,7 @@ func OneByEmailSocket(email string, socket string) error {
 	session := Models.Session{}
 	result := Connection.Get().Where("email = ? AND socket_id = ?", email, socket).Delete(&session)
 
+	Connection.Close()
+
 	return result.Error
 }

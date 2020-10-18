@@ -13,5 +13,7 @@ func One(email string, socket string) (Models.Session, error) {
 	}
 	result := Connection.Get().Create(&session)
 
+	Connection.Close()
+
 	return session, result.Error
 }

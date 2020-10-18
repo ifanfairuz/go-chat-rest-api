@@ -24,5 +24,7 @@ func Read(id int, email string) error {
 
 	result = result.Update("status", 3).Update("read_at", time.Now().Unix())
 
+	Connection.Close()
+
 	return result.Error
 }

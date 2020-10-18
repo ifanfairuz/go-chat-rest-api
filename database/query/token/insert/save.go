@@ -16,5 +16,7 @@ func save(email string, token string) bool {
 		ExpiredAt: expired.Unix(),
 	})
 
+	Connection.Close()
+
 	return (result.Error == nil)
 }
