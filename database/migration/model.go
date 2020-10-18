@@ -1,14 +1,14 @@
 package migration
 
 import (
-	Connection "github.com/ifanfairuz/go-chat-rest-api/database/connection"
+	"gorm.io/gorm"
 )
 
 /**
 * migrate via model
 **/
-func migrateModel(model interface{}) {
-	if !Connection.Get().Migrator().HasTable(model) {
-		Connection.Get().Migrator().CreateTable(model)
+func migrateModel(connection *gorm.DB, model interface{}) {
+	if !connection.Migrator().HasTable(model) {
+		connection.Migrator().CreateTable(model)
 	}
 }
