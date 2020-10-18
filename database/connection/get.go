@@ -10,5 +10,6 @@ import (
 * return *gorm.DB
 **/
 func Get() *gorm.DB {
+	Connect()
 	return database
 }
