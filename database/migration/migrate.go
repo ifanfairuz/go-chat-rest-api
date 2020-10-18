@@ -1,7 +1,7 @@
 package migration
 
 import (
-	Models "github.com/ifanfairuz/go-chat-rest-api/command"
+	Models "github.com/ifanfairuz/go-chat-rest-api/database/models"
 )
 
 // Migrate DB
