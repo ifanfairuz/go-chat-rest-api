@@ -4,6 +4,8 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+
+	Router "github.com/ifanfairuz/go-chat-rest-api/router/router"
 )
 
 // Run function
@@ -16,6 +18,8 @@ func Run(address string) {
 	var app *fiber.App
 
 	app = fiber.New()
+	migration()
+	Router.Create(app)
 
 	if app != nil {
 		app.Listen(address)

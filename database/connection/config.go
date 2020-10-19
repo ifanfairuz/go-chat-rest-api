@@ -1,7 +1,7 @@
 package connection
 
 import (
-	Command "github.com/ifanfairuz/go-chat-rest-api/command"
+	"os"
 )
 
 /**
@@ -10,11 +10,11 @@ import (
 **/
 func getConfig() *Config {
 	return &Config{
-		Host:     Command.GetEnv("DB_HOST"),
-		Port:     Command.GetEnv("DB_PORT"),
-		User:     Command.GetEnv("DB_USER"),
-		Password: Command.GetEnv("DB_PASSWORD"),
-		Dbname:   Command.GetEnv("DB_DB_NAME"),
-		Charset:  Command.GetEnv("DB_CHARSET"),
+		Host:     os.Getenv("DB_HOST"),
+		Port:     os.Getenv("DB_PORT"),
+		User:     os.Getenv("DB_USER"),
+		Password: os.Getenv("DB_PASSWORD"),
+		Dbname:   os.Getenv("DB_DB_NAME"),
+		Charset:  os.Getenv("DB_CHARSET"),
 	}
 }
