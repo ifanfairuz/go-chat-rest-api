@@ -10,7 +10,7 @@ import (
 
 // Send handler
 func Send(c *fiber.Ctx) error {
-	c.Locals("inputvalidations", []string{"email", "to", "text", "send_at"})
+	c.Locals("inputvalidations", []string{"to", "text", "send_at"})
 	token := c.Locals("token").(Models.Token)
 	var param Request
 	done, res := Network.Parse(c, &param)
