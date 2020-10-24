@@ -4,6 +4,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 
 	Delete "github.com/ifanfairuz/go-chat-rest-api/database/query/session/delete"
+	UserSet "github.com/ifanfairuz/go-chat-rest-api/database/query/users/set"
 	Network "github.com/ifanfairuz/go-chat-rest-api/lib/network"
 )
 
@@ -17,6 +18,9 @@ func Reset(c *fiber.Ctx) error {
 	}
 
 	erro := Delete.AllByEmail(param.Email)
+	if erro == nil {
+		UserSet.Online(param.Email, false)
+	}
 
 	if erro != nil {
 		return c.Status(400).JSON(&Network.ErrResponse{
