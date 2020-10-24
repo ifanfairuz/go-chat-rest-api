@@ -16,4 +16,5 @@ func Create(app *fiber.App) {
 	createToken(app)
 	createSession(app)
 	createChat(app)
+	createUsers(app)
 }
