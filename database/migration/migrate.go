@@ -15,6 +15,7 @@ func Migrate() {
 	migrateModel(connection, &Models.Token{})
 	migrateModel(connection, &Models.Session{})
 	migrateModel(connection, &Models.Chat{})
+	migrateModel(connection, &Models.User{})
 
 	Connection.Close()
 }
