@@ -12,12 +12,14 @@ func Online(email string, status bool) error {
 	query := Connection.Get()
 
 	var user Models.User
-	result := query.First(&user, email)
-	if result.Error != nil {
+	result := query.Where("email = ?", email).First(&user)
+	if result.RowsAffected < 1 {
 		return result.Error
 	}
 
-	result = result.Update("status_online", status).Update("last_online", time.Now().Unix())
+	user.StatusOnline = status
+	user.LastOnline = time.Now().Unix()
+	result = result.Save(&user)
 
 	Connection.Close()
 

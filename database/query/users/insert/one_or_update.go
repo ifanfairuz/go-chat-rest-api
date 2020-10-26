@@ -6,11 +6,13 @@ import (
 )
 
 // OneOrUpdate chats
-func OneOrUpdate(email string, statusOnline bool) (Models.User, error) {
+func OneOrUpdate(email string, statusOnline bool, image string) (Models.User, error) {
 	var exist Models.User
-	query := Connection.Get().First(&exist, email)
-	if query.Error != nil {
+	connection := Connection.Get()
+	query := connection.Where("email = ?", email).First(&exist)
+	if query.RowsAffected > 0 {
 		query.Update("status_online", true)
+		Connection.Close()
 		return exist, nil
 	}
 
@@ -18,8 +20,9 @@ func OneOrUpdate(email string, statusOnline bool) (Models.User, error) {
 		Email:        email,
 		StatusOnline: true,
 		LastOnline:   0,
+		Image:        image,
 	}
-	result := Connection.Get().Create(&chat)
+	result := connection.Create(&chat)
 
 	Connection.Close()
 

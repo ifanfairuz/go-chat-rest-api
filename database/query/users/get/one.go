@@ -8,7 +8,7 @@ import (
 // One get user
 func One(email string) (Models.User, error) {
 	var user Models.User
-	result := Connection.Get().First(&user, email)
+	result := Connection.Get().Where("email = ?", email).First(&user)
 
 	Connection.Close()
 
