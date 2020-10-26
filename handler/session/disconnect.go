@@ -19,11 +19,9 @@ func Diconnect(c *fiber.Ctx) error {
 	}
 
 	erro := Delete.OneByEmailSocket(param.Email, param.Socket)
-	if erro == nil {
-		sessions, getErr := GetSession.AllByEmail(param.Email)
-		if getErr == nil && len(sessions) <= 0 {
-			UserSet.Online(param.Email, false)
-		}
+	sessions, getErr := GetSession.AllByEmail(param.Email)
+	if getErr == nil && len(sessions) <= 0 {
+		UserSet.Online(param.Email, false)
 	}
 
 	if erro != nil {
