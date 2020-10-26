@@ -11,4 +11,5 @@ type Config struct {
 	Password string
 	Dbname   string
 	Charset  string
+	Timezone string
 }

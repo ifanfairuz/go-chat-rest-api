@@ -16,5 +16,6 @@ func getConfig() *Config {
 		Password: os.Getenv("DB_PASSWORD"),
 		Dbname:   os.Getenv("DB_DB_NAME"),
 		Charset:  os.Getenv("DB_CHARSET"),
+		Timezone: os.Getenv("TIMEZONE"),
 	}
 }
