@@ -10,6 +10,10 @@ import (
 * return *gorm.DB
 **/
 func Get() *gorm.DB {
-	Connect()
+	sqlDB, err := database.DB()
+	if err = sqlDB.Ping(); err != nil {
+		Connect()
+	}
+
 	return database
 }
