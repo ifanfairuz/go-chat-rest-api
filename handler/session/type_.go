@@ -13,6 +13,7 @@ import (
 type Request struct {
 	Email  string `json:"email" xml:"email" form:"email"`
 	Socket string `json:"socket" xml:"socket" form:"socket"`
+	Image  string `json:"image" xml:"image" form:"image"`
 }
 
 // Validate Request
@@ -25,6 +26,10 @@ func (param Request) Validate(c *fiber.Ctx) error {
 
 	if Functions.InArrayString("socket", validations) && param.Socket == "" {
 		return errors.New("missing-socket")
+	}
+
+	if Functions.InArrayString("image", validations) && param.Socket == "" {
+		return errors.New("missing-image")
 	}
 
 	return nil

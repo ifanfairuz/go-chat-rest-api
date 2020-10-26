@@ -10,7 +10,7 @@ import (
 
 // Connect handler
 func Connect(c *fiber.Ctx) error {
-	c.Locals("inputvalidations", []string{"email", "socket"})
+	c.Locals("inputvalidations", []string{"email", "socket", "image"})
 	var param Request
 	done, res := Network.Parse(c, &param)
 	if !done {
@@ -19,7 +19,7 @@ func Connect(c *fiber.Ctx) error {
 
 	session, erro := Insert.One(param.Email, param.Socket)
 	if erro == nil {
-		UserInsert.OneOrUpdate(param.Email, true)
+		UserInsert.OneOrUpdate(param.Email, true, param.Image)
 	}
 
 	if erro != nil {
