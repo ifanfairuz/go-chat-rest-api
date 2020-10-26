@@ -25,7 +25,7 @@ func CheckAPIToken(c *fiber.Ctx) error {
 	}
 
 	var apiToken Models.APIToken
-	result := Connection.Get().First(&apiToken, token)
+	result := Connection.Get().Where("token = ?", token).First(&apiToken)
 	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
 		return c.Status(403).JSON(&Network.ErrResponse{
 			Status:  false,
