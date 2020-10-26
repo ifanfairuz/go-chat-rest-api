@@ -9,7 +9,7 @@ import (
 
 func createChat(app *fiber.App) {
 	chat := app.Group("/chat", Middleware.CheckToken)
-	withTarget := chat.Group("/with", Middleware.CheckParams([]string{"target"}))
+	withTarget := app.Group("/chat/with", Middleware.CheckToken)
 
 	chat.Get("/history/:limit?", Chat.GetHistory)
 	chat.Get("/get/:id", Chat.Get)
