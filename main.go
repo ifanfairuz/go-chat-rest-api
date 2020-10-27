@@ -11,5 +11,5 @@ func init() {
 }
 
 func main() {
-	Command.Run(":" + os.Getenv("PORT"))
+	Command.Run(":" + os.Getenv("APP_PORT"))
 }

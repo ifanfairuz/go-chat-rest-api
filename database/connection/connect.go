@@ -35,6 +35,7 @@ func Connect() bool {
 		return false
 	}
 
+	log.Print("Database Connected.")
 	database = db
 	return true
 }

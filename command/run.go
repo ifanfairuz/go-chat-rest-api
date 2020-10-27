@@ -22,6 +22,7 @@ func Run(address string) {
 	Router.Create(app)
 
 	if app != nil {
+		log.Printf("Listen on: %s", address)
 		app.Listen(address)
 	} else {
 		log.Fatal("Error.")
