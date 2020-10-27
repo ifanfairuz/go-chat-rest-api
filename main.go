@@ -1,13 +1,15 @@
 package main
 
 import (
+	"os"
+
 	Command "github.com/ifanfairuz/go-chat-rest-api/command"
 )
 
 func init() {
-	Command.LoadEnv()
+	// Command.LoadEnv()
 }
 
 func main() {
-	Command.Run(":3000")
+	Command.Run(os.Getenv("PORT"))
 }
